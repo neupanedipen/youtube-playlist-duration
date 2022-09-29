@@ -87,7 +87,7 @@ function App() {
   return (
     <>
       <div className="container pt-2">
-      <div class="ribbon">
+      <div className="ribbon">
         <a href="https://github.com/neupanedipen/youtube-playlist-duration">Fork me on GitHub</a>
       </div>
         <hr />
