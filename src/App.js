@@ -88,7 +88,7 @@ function App() {
     <>
       <div className="container pt-2">
       <div className="ribbon">
-        <a href="https://github.com/neupanedipen/youtube-playlist-duration">Fork me on GitHub</a>
+        <a href="https://github.com/neupanedipen/youtube-playlist-duration" target={'_blank'}>Fork me on GitHub</a>
       </div>
         <hr />
         <h2 className='my-4'><strong>Youtube Playlist Length</strong></h2>
