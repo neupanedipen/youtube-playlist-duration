@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import PlaylistSummary from 'youtube-playlist-summary'
 import moment from 'moment';
 import spinner from '../src/assets/spinner.svg'
 
 function App() {
-
   const [playlistUrl, setPlaylistUrl] = useState('');
   const [allDetails, setAllDetails] = useState({})
   const [display, setDisplay] = useState(false)
@@ -12,23 +10,52 @@ function App() {
   let allDurations = [];
   let playlistID;
   let len;
+  let arr = []
+  let pageToken = ''
   const api = process.env.REACT_APP_API_KEY;
 
-  //Configuration for youtube-playlist-summary
-  const config = {
-    GOOGLE_API_KEY: api,
-    PLAYLIST_ITEM_KEY: ['publishedAt', 'title', 'description', 'videoId', 'videoUrl'],
-  }
+  //Function to fetch video IDs from the playlist
+  const fetchVideoIds = async () => {
+    const response = await fetch(`https://youtube.googleapis.com/youtube/v3/playlistItems?maxResults=50&part=contentDetails&pageToken=${pageToken}&playlistId=${playlistID}&key=${api}`)
+    const res = await response.json()
+    const totalResults = await res['pageInfo'].totalResults
+    await res['items'].forEach((item) => {
+      arr.push(item['contentDetails'].videoId)
+    })
 
-  const ps = new PlaylistSummary(config)
+    //If the fethced page contains nextPageToken (ie. no of videos >50) in a page
+    if (res.nextPageToken) {
+      pageToken = res.nextPageToken;
+      let videoLen = totalResults - 50;
+      for (let i = 0; i < Math.floor(videoLen / 50); i++) {
+        const respo = await fetch(`https://youtube.googleapis.com/youtube/v3/playlistItems?maxResults=50&part=contentDetails&pageToken=${pageToken}&playlistId=${playlistID}&key=${api}`);
+        const resp = await respo.json();
+        await resp['items'].forEach((item) => {
+          arr.push(item['contentDetails'].videoId)
+        })
+        pageToken = await resp.nextPageToken
+      }
+      //Fetch last time to get videoIds for last page with no pageToken
+      const respAgain = await fetch(`https://youtube.googleapis.com/youtube/v3/playlistItems?maxResults=50&part=contentDetails&pageToken=${pageToken}&playlistId=${playlistID}&key=${api}`)
+      const resAgain = await respAgain.json();
+      await resAgain['items'].forEach((item) => {
+        arr.push(item['contentDetails'].videoId)
+      })
+    }
+
+    if (arr.length === totalResults) {
+      return arr;
+    }
+  }
 
   const getVideoDetails = async (id, len) => {
     const response = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails%2Cstatistics&id=${id}&key=${api}`)
     const data = await response.json()
-    let timeInMS = moment.duration(data.items[0].contentDetails.duration).asMilliseconds();
-    allDurations.push(timeInMS)
-
-    if (allDurations.length === len) {
+    if (data.items[0]) {
+      let timeInMS = moment.duration(data.items[0].contentDetails.duration).asMilliseconds();
+      allDurations.push(timeInMS)
+    }
+    if (allDurations.length <= len) {
       const totalDuration = await allDurations.reduce((acc, curr) => {
         return acc + curr;
       })
@@ -43,12 +70,19 @@ function App() {
       //Get playlist id from the URL
       const reg = /[&?]list=([^&]+)/i
       const match = reg.exec(playlistUrl);
-      playlistID = match[1];
+      if (match) {
+        playlistID = match[1];
+      }
+      else {
+        alert("Enter valid URL")
+        setLoading(false)
+        setPlaylistUrl("")
+        return
+      }
+      await fetchVideoIds()
+      len = arr.length;
       //Get video details for each video id in the playlist
-      const result = await ps.getPlaylistItems(playlistID)
-      let videoIds = result.items.map(item => item.videoId)
-      len = result.items.length
-      videoIds.map((videoId) => getVideoDetails(videoId, len))
+      arr.map((videoId) => getVideoDetails(videoId, len))
     }
     else {
       alert("Enter a valid URL")
@@ -77,9 +111,9 @@ function App() {
     twoX = formatTime(secs / 2);
     average = formatTime(secs / len);
     noOfVids = len;
+    setAllDetails({ oneX, onePointTwoFiveX, onePointFiveX, onePointSevenFiveX, twoX, average, noOfVids })
     setLoading(false);
     setDisplay(true)
-    setAllDetails({ oneX, onePointTwoFiveX, onePointFiveX, onePointSevenFiveX, twoX, average, noOfVids })
     setPlaylistUrl("")
   }
 
@@ -87,9 +121,9 @@ function App() {
   return (
     <>
       <div className="container pt-2">
-      <div className="ribbon">
-        <a href="https://github.com/neupanedipen/youtube-playlist-duration" target={'_blank'}>Fork me on GitHub</a>
-      </div>
+        <div className="ribbon">
+          <a href="https://github.com/neupanedipen/youtube-playlist-duration" target={'_blank'}>Fork me on GitHub</a>
+        </div>
         <hr />
         <h2 className='my-4'><strong>Youtube Playlist Length</strong></h2>
         <hr />
