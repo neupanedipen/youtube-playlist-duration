@@ -7,6 +7,84 @@
   pointer-events: none;
 }
 
+#diff{
+  color: #ff0000;
+}
+.app-title {
+  font-family :"Poppins", sans-serif;
+  font-size :3.7rem;
+  font-weight :700;
+  word-spacing: 5px;
+  text-transform :capitalize;
+  letter-spacing :1px;
+}
+
+.input-group {
+  width : 100%;
+  display : flex;
+  flex-direction : column;
+  justify-content : center;
+  align-items : center;
+  padding : 2rem;
+}
+.input-link {
+  width : 70%;
+  -webkit-appearance : none;
+  -moz-appearance : none;
+  font-family : "Urbanist", sans-serif;
+  letter-spacing : 2px;
+  padding : 0.5rem;
+  border : 1px solid hsl(225, 10%, 45%);
+  box-shadow : 2px 2px 2px 2px #ccc;
+}
+.submit-btn {
+  margin : 1rem;
+  padding : 1rem 2rem;
+  text-transform : uppercase;
+  font-family : "Urbanist", sans-serif;
+  letter-spacing : 4px;
+  position : relative;
+  overflow : hidden;
+  cursor : pointer;
+  background-color : #ff0000;
+  color : #fff;
+  border : 1px solid #fff;
+  border-radius : 3px;
+  transition : 0.2s ease;
+}
+.submit-btnhover {
+  background-color : #fff;
+  color : #ff0000;
+  border : 1px solid #ff0000;
+  transition : 0.3s ease;
+}
+
+.example-link {
+  padding : 1rem;
+  font-size : 0.9rem;
+  font-family : "Urbanist", sans-serif;
+  font-weight : 400;
+  word-spacing : 5px;
+  letter-spacing : 1px;
+  color : #0f0f0f;
+}
+.display-length p{
+  font-size :1rem;
+  font-family : "Urbanist", sans-serif;
+  font-weight : 400;
+  word-spacing : 5px;
+  letter-spacing : 1px;
+  color : #0f0f0f;
+}
+.display-length h2{
+  font-size : 1.5rem;
+  font-family : "Poppins", sans-serif;
+  font-weight : 600;
+  word-spacing : 5px;
+  letter-spacing : 1px;
+  color : #0f0f0f;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

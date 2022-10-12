@@ -45,7 +45,7 @@ p {
 }
 
 .ribbon {
-  background-color: #a00;
+  background-color: #ff0000;
   overflow: hidden;
   white-space: nowrap;
   position: absolute;
@@ -64,10 +64,9 @@ p {
   border: 1px solid #faa;
   color: #fff;
   display: block;
-  font: bold 91.25% 'Roboto', Helvetica, Arial, sans-serif;
+  font-family: "Urbanist", sans-serif;
   margin: 1px 0;
   padding: 10px 50px;
   text-align: center;
   text-decoration: none;
-  text-shadow: 0 0 5px #444;
 }
