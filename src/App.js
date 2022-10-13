@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from "react";
 import moment from "moment";
 import spinner from "../src/assets/spinner.svg";
+import githubLogo from '../src/assets/github.png'
 
 function App() {
     const [playlistUrl, setPlaylistUrl] = useState("");
@@ -118,45 +119,46 @@ function App() {
 
     return (
         <>
-      <div className="container pt-2">
-        <div className="ribbon">
-          <a href="https://github.com/neupanedipen/youtube-playlist-duration" target={'_blank'}>Fork me on GitHub</a>
-        </div>
-        <hr />
-        <h2 className='app-title'><strong><span id="diff">Y</span>ouTube Playlist Length</strong></h2>
-        <hr />
-        <div className="input-group">
-          <input type="text" className="input-link" placeholder="Enter Playlist URL" value={playlistUrl} onChange={e => setPlaylistUrl(e.target.value)} />
-          <span className="text no-outline"><button type="button" className="submit-btn" onClick={handleClick}>Get Length</button></span>
-        </div>
-        <p className='example-link'><strong>Example:</strong> https://www.youtube.com/playlist?list=PLTxhk835mIdJgdTORxj8xPOkb-ceoue7A</p>
-        <>
-          {
-            loading && (
-              <div className='loader my-3'>
-                <img src={spinner} alt='Loading..' />
-              </div>
-            )
-          }
-        </>
-        <>
-          {(loading === false && display) && ((
-            <div className="display-length my-5">
-              <h2>{`Total duration of this playlist is ${allDetails.oneX.hours} hours ${allDetails.oneX.min} minutes ${allDetails.oneX.seconds} seconds`}</h2>
-              <hr />
-              <p>{`No of videos: ${allDetails.noOfVids}`}</p>
-              <p>{`Duration At 1.25X: ${allDetails.onePointTwoFiveX.hours} hours ${allDetails.onePointTwoFiveX.min} minutes ${allDetails.onePointTwoFiveX.seconds} seconds`}</p>
-              <p>{`Duration At 1.5X: ${allDetails.onePointFiveX.hours} hours ${allDetails.onePointFiveX.min} minutes ${allDetails.onePointFiveX.seconds} seconds`}</p>
-              <p>{`Duration At 1.75X: ${allDetails.onePointSevenFiveX.hours} hours ${allDetails.onePointSevenFiveX.min} minutes ${allDetails.onePointSevenFiveX.seconds} seconds`}</p>
-              <p>{`Duration At 2X: ${allDetails.twoX.hours} hours ${allDetails.twoX.min} minutes ${allDetails.twoX.seconds} seconds`}</p>
-              <hr />
-              <p>{`Average duration of video is ${allDetails.average.hours} hours ${allDetails.average.min} minutes ${allDetails.average.seconds} seconds`}</p>
+            <div className="container pt-2">
+                <hr />
+                <h2 className='app-title'><strong><span id="diff">Y</span>ouTube Playlist Length</strong></h2>
+                <hr />
+                <div className="input-group">
+                    <input type="text" className="input-link" placeholder="Enter Playlist URL" value={playlistUrl} onChange={e => setPlaylistUrl(e.target.value)} />
+                    <span className="text no-outline"><button type="button" className="submit-btn" onClick={handleClick}>Get Length</button></span>
+                </div>
+                <p className='example-link'><strong>Example:</strong> https://www.youtube.com/playlist?list=PLTxhk835mIdJgdTORxj8xPOkb-ceoue7A</p>
+                <>
+                    {
+                        loading && (
+                            <div className='loader my-3'>
+                                <img src={spinner} alt='Loading..' />
+                            </div>
+                        )
+                    }
+                </>
+                <>
+                    {(loading === false && display) && ((
+                        <div className="display-length my-5">
+                            <h2>{`Total duration of this playlist is ${allDetails.oneX.hours} hours ${allDetails.oneX.min} minutes ${allDetails.oneX.seconds} seconds`}</h2>
+                            <hr />
+                            <p>{`No of videos: ${allDetails.noOfVids}`}</p>
+                            <p>{`Duration At 1.25X: ${allDetails.onePointTwoFiveX.hours} hours ${allDetails.onePointTwoFiveX.min} minutes ${allDetails.onePointTwoFiveX.seconds} seconds`}</p>
+                            <p>{`Duration At 1.5X: ${allDetails.onePointFiveX.hours} hours ${allDetails.onePointFiveX.min} minutes ${allDetails.onePointFiveX.seconds} seconds`}</p>
+                            <p>{`Duration At 1.75X: ${allDetails.onePointSevenFiveX.hours} hours ${allDetails.onePointSevenFiveX.min} minutes ${allDetails.onePointSevenFiveX.seconds} seconds`}</p>
+                            <p>{`Duration At 2X: ${allDetails.twoX.hours} hours ${allDetails.twoX.min} minutes ${allDetails.twoX.seconds} seconds`}</p>
+                            <hr />
+                            <p>{`Average duration of video is ${allDetails.average.hours} hours ${allDetails.average.min} minutes ${allDetails.average.seconds} seconds`}</p>
+                        </div>
+                    ))
+                    }
+                </>
+                <hr />
+                <footer>
+                    <h3>Fork me on <a href="https://github.com/neupanedipen/youtube-playlist-duration"><img src={githubLogo} className='github-logo' /></a></h3>
+                </footer>
             </div>
-          ))
-          }
         </>
-      </div>
-    </>
     );
 }
 
