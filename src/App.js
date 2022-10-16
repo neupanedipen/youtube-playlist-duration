@@ -23,10 +23,18 @@ function App() {
                 `https://youtube.googleapis.com/youtube/v3/playlistItems?maxResults=50&part=contentDetails&pageToken=${pageToken}&playlistId=${playlistID}&key=${api}`
             );
             const res = await response.json();
-            await res.items.forEach((item) => {
-                arr.push(item.contentDetails.videoId);
-            });
-            pageToken = res.nextPageToken;
+
+            if (res.error) { // If the API returns an error, the URL may have a spelling mistake.
+                alert("Enter valid URL");
+                setLoading(false);
+                setPlaylistUrl("");
+                return;
+            } else { // Else the API does not return error, push results to array.
+                await res.items.forEach((item) => {
+                    arr.push(item.contentDetails.videoId);
+                });
+                pageToken = res.nextPageToken;
+            }
         }
     };
 
@@ -43,8 +51,11 @@ function App() {
         }
     };
 
-    const handleClick = async () => {
+    const handleClick = async () => { // User has clicked on Get Length.
         if (playlistUrl) {
+            // Erase any previous data on screen.
+            setAllDetails("");
+            setDisplay("");
             setLoading(true);
             //Get playlist id from the URL
             const reg = /[&?]list=([^&]+)/i;
@@ -63,7 +74,7 @@ function App() {
             await Promise.all(
                 arr.map((videoId) => getVideoDetails(videoId, len))
             );
-            if (allDurations.length <= len) {
+            if ((allDurations.length <= len) && (len > 0)) { // The length of the array must be greater than 0 or else the reduce fails.
                 const totalDuration = await allDurations.reduce((acc, curr) => {
                     return acc + curr;
                 });
