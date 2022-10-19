@@ -19,14 +19,19 @@ code {
   padding: 0 6rem;
 }
 
+@media (max-width: 480px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
 .no-outline {
   outline: none;
 }
 
-h2{
-  text-align: center  ;
+h2, h1{
+  text-align: center;
 }
-
 
 p {
   font-size: 18px;
