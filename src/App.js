@@ -132,13 +132,13 @@ function App() {
         <>
             <div className="container pt-2">
                 <hr />
-                <h2 className='app-title'><strong><span id="diff">Y</span>ouTube Playlist Length</strong></h2>
+                <h1 className='app-title'><span id="diff">Y</span>ouTube Playlist Length</h1>
                 <hr />
                 <div className="input-group">
                     <input type="text" className="input-link" placeholder="Enter Playlist URL" value={playlistUrl} onChange={e => setPlaylistUrl(e.target.value)} />
                     <span className="text no-outline"><button type="button" className="submit-btn" onClick={handleClick}>Get Length</button></span>
                 </div>
-                <p className='example-link'><strong>Example:</strong> https://www.youtube.com/playlist?list=PLTxhk835mIdJgdTORxj8xPOkb-ceoue7A</p>
+                <div className='example-link'><p><strong>Example:</strong> https://www.youtube.com/playlist?list=PLTxhk835mIdJgdTORxj8xPOkb-ceoue7A</p></div>
                 <>
                     {
                         loading && (

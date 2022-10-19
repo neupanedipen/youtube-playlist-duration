@@ -13,11 +13,17 @@
 
 .app-title {
   font-family: "Poppins", sans-serif;
+  width: 100%;
   font-size: 3.7rem;
   font-weight: 700;
   word-spacing: 5px;
   text-transform: capitalize;
   letter-spacing: 1px;
+}
+@media (max-width: 720px) {
+  .app-title {
+    font-size: 2rem;
+  }
 }
 
 .input-group {
@@ -27,6 +33,11 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
+}
+@media (max-width: 720px) {
+  .input-group {
+    padding: 0;
+  }
 }
 
 .input-link {
@@ -38,6 +49,11 @@
   padding: 0.5rem;
   border: 1px solid hsl(225, 10%, 45%);
   box-shadow: 2px 2px 2px 2px #ccc;
+}
+@media (max-width: 720px) {
+  .input-link {
+    width: 100%;
+  }
 }
 
 .submit-btn {
@@ -71,6 +87,12 @@
   word-spacing: 5px;
   letter-spacing: 1px;
   color: #0f0f0f;
+}
+@media (max-width: 720px) {
+  .example-link {
+    padding: 0;
+    word-break: break-all;
+  }
 }
 
 .display-length p {
