@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://ytplaylistduration.netlify.app/*"
+  to = "https://app.yourdomain.com/:splat"
+  status = 301
+  force = true
