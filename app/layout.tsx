@@ -24,8 +24,6 @@ export const metadata: Metadata = {
     "video duration tool",
     "playlist watch time",
   ],
-  authors: [{ name: "Dipendra Neupane" }],
-  creator: "Dipendra Neupane",
   metadataBase: new URL("https://ytplaylistduration.neupanedipendra.com.np/"),
 
   openGraph: {
@@ -35,6 +33,14 @@ export const metadata: Metadata = {
     url: "https://ytplaylistduration.neupanedipendra.com.np/",
     siteName: "YouTube Playlist Length",
     type: "website",
+    images: [
+      {
+        url: "/ytduration.png",
+        width: 1200,
+        height: 630,
+        alt: "YouTube Playlist Length Calculator",
+      },
+    ],
   },
 
   twitter: {
@@ -42,6 +48,7 @@ export const metadata: Metadata = {
     title: "YouTube Playlist Length Calculator",
     description:
       "Calculate playlist duration and optimize your watch time with speed breakdowns.",
+    images: ["/ytduration.png"],
   },
 };
 
