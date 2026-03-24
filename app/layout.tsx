@@ -15,38 +15,50 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "YouTube Playlist Length Calculator",
+  title: "Free YouTube Playlist Length Calculator",
   description:
-    "Calculate the total duration of any YouTube playlist instantly. View watch time at different playback speeds and average video length.",
+    "Calculate the total duration of any YouTube playlist instantly for free. View watch time at different playback speeds and average video length.",
   keywords: [
     "youtube playlist duration",
     "playlist length calculator",
     "youtube time calculator",
     "video duration tool",
     "playlist watch time",
+    "free youtube playlist length calculator",
+    "free youtube playlist duration calculator",
+    "youtube playlist duration calculator online",
+    "calculate youtube playlist length",
+    "youtube playlist time calculator",
+    "playlist duration calculator free",
+    "youtube playlist length tool",
+    "youtube playlist duration checker",
+    "youtube playlist duration estimator",
+    "youtube playlist duration breakdown",
+    "youtube playlist duration by speed",
+    "youtube playlist average video length",
   ],
   metadataBase: new URL("https://ytplaylistduration.neupanedipendra.com.np/"),
 
   openGraph: {
-    title: "YouTube Playlist Length Calculator",
+    title: "Free YouTube Playlist Length Calculator",
     description:
       "Find total playlist duration, playback speed breakdown, and average video length instantly.",
     url: "https://ytplaylistduration.neupanedipendra.com.np/",
-    siteName: "YouTube Playlist Length",
+    siteName: "Free YouTube Playlist Length Calculator",
     type: "website",
     images: [
       {
         url: "/ytduration.png",
         width: 1200,
         height: 630,
-        alt: "YouTube Playlist Length Calculator",
+        alt: "Free YouTube Playlist Length Calculator",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "YouTube Playlist Length Calculator",
+    title: "Free YouTube Playlist Length Calculator",
     description:
       "Calculate playlist duration and optimize your watch time with speed breakdowns.",
     images: ["/ytduration.png"],
