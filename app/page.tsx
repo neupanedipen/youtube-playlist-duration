@@ -110,14 +110,14 @@ export default function Page() {
               <ResultsGrid allDetails={allDetails} />
             </div>
           )}
-
-          <div className="mt-8 space-y-6">
+        </section>
+        <section className="mx-auto w-full max-w-5xl my-8 rounded-[28px] border border-white/10 bg-white/5 p-4 shadow-2xl backdrop-blur-xl sm:p-6 lg:p-8">
+          <div className="space-y-6">
             <ToolOverviewSection />
             <HowItWorksSection />
             <PlaylistDurationFaqSection />
           </div>
         </section>
-
         <Footer />
       </div>
     </main>
