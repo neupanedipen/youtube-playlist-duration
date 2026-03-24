@@ -6,6 +6,9 @@ import PlaylistForm from "@/app/components/PlaylistForm";
 import LoadingCard from "@/app/components/LoadingCard";
 import ResultsGrid from "@/app/components/ResultsGrid";
 import Footer from "@/app/components/Footer";
+import ToolOverviewSection from "./components/ToolOverviewSection";
+import HowItWorksSection from "./components/HowItWorks";
+import PlaylistDurationFaqSection from "./components/PlaylistDurationFaqSection";
 
 type TimeFormat = {
   hours: number;
@@ -107,6 +110,12 @@ export default function Page() {
               <ResultsGrid allDetails={allDetails} />
             </div>
           )}
+
+          <div className="mt-8 space-y-6">
+            <ToolOverviewSection />
+            <HowItWorksSection />
+            <PlaylistDurationFaqSection />
+          </div>
         </section>
 
         <Footer />
