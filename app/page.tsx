@@ -9,6 +9,7 @@ import Footer from "@/app/components/Footer";
 import ToolOverviewSection from "./components/ToolOverviewSection";
 import HowItWorksSection from "./components/HowItWorks";
 import PlaylistDurationFaqSection from "./components/PlaylistDurationFaqSection";
+import OtherToolsSection from "./components/OtherToolsSection";
 
 type TimeFormat = {
   hours: number;
@@ -111,6 +112,9 @@ export default function Page() {
             </div>
           )}
         </section>
+
+        <OtherToolsSection />
+
         <section className="mx-auto w-full max-w-5xl my-8 rounded-[28px] border border-white/10 bg-white/5 p-4 shadow-2xl backdrop-blur-xl sm:p-6 lg:p-8">
           <div className="space-y-6">
             <ToolOverviewSection />
