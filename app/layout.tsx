@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Script from "next/script";
+import FloatingBuyMeACoffee from "./components/FloatingBuyMeACoffee";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -77,7 +78,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         {children}
-
+        <FloatingBuyMeACoffee />
         <GoogleAnalytics gaId="G-4DKFSM84GW" />
         <Script
           async
